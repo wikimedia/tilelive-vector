@@ -79,7 +79,6 @@ Backend.prototype.getTile = function(z, x, y, callback) {
         z: z,
         x: x,
         y: y,
-        raw_buffer: callback.raw_buffer,
         legacy: callback.legacy,
         scale: callback.scale,
         upgrade: callback.upgrade,
@@ -103,8 +102,6 @@ function _getTileAsync(opts) {
     }
     var source = backend._source;
     var now = +new Date;
-    // if true, return raw buffer rather than mapnik.VectorTile
-    var raw_buffer = opts.raw_buffer || false;
     var legacy = opts.legacy || false;
     var scale = opts.scale || backend._scale;
     var upgrade = opts.upgrade || false;
@@ -147,15 +144,6 @@ function _getTileAsync(opts) {
 
         // Set x-vector-backend-status header.
         headers['x-vector-backend-object'] = headers['x-vector-backend-object'] || 'default';
-
-        // Pass-thru of raw buffer (no mapnik.VectorTile)
-        if (raw_buffer) {
-            if (data) {
-              data.tile_type = type;
-              data.layer_name = backend._layer;
-            }
-            return callback(null, data, headers, bz, bx, by);
-        }
 
         // Pass-thru of an upstream mapnik vector tile (not pbf) source.
         if (data instanceof mapnik.VectorTile) return accept({data: data, headers: headers});

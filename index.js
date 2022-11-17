@@ -163,7 +163,6 @@ function getAsyncParameters(z, x, y, callback) {
         z: z,
         x: x,
         y: y,
-        raw_buffer: callback.raw_buffer,
         format: callback.format,
         scale: callback.scale,
         profile: callback.profile,
@@ -486,7 +485,7 @@ function tm2z(uri, callback) {
     if (typeof uri === 'string') {
         uri = url.parse(uri, true);
         uri.pathname = qs.unescape(uri.pathname);
-    }    
+    }
 
     var maxsize = {
         file: uri.filesize || 750 * 1024,
