@@ -1,11 +1,11 @@
 {
-  "name": "@mapbox/tilelive-vector",
-  "version": "4.2.0",
+  "name": "@wikimedia/tilelive-vector",
+  "version": "4.2.1",
   "main": "./index.js",
   "description": "Vector tile => raster tile backend for tilelive",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/tilelive-vector.git"
+    "url": "git://github.com/wikimedia/tilelive-vector.git"
   },
   "licenses": [
     {
@@ -20,7 +20,7 @@
     "@mapbox/tilelive": "~5.12.0",
     "@mapbox/tiletype": "0.3.x",
     "numeral": "~1.5.3",
-    "request": "~2.83.0",
+    "request": "^2.88.2",
     "spherical": "~0.1.0",
     "tar": "~2.2.1",
     "underscore": "~1.8.0"
