@@ -1,4 +1,3 @@
-var tilelive = require('@mapbox/tilelive');
 var tiletype = require('@mapbox/tiletype');
 var mapnik = require('@kartotherian/mapnik');
 var fs = require('fs');
