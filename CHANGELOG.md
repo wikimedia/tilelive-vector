@@ -2,9 +2,8 @@
 
 ## 4.3.0
 
-- Apply changes to support the getAsync() interface used in [kartotherian](https://github.com/wikimedia/mediawiki-services-kartotherian)
-- Pass params through to backend source
-- Remove support for raw buffer pass through
+- Add treatAsVector option from kartotherian fork
+- Add async support via tilelive-promise
 
 ## 4.2.0
 - Introduce raw buffer pass through [#155](https://github.com/mapbox/tilelive-vector/pull/155)

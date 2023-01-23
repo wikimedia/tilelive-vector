@@ -3,6 +3,7 @@ var crypto = require('crypto');
 var mapnik = require('mapnik');
 var util = require('util');
 var sm = new (require('@mapbox/sphericalmercator'))();
+var uptile = require('tilelive-promise');
 
 module.exports = Backend;
 
@@ -35,7 +36,7 @@ function Backend(opts, callback) {
         backend._fillzoom = 'fillzoom' in info && !isNaN(parseInt(info.fillzoom, 10)) ?
             parseInt(info.fillzoom, 10) :
             undefined;
-        backend._source = source;
+        backend._source = uptile( source );
         if (callback) callback(null, backend);
     }
 };
@@ -58,6 +59,7 @@ Backend.prototype.getTile = function(z, x, y, callback) {
     var legacy = callback.legacy || false;
     var scale = callback.scale || backend._scale;
     var upgrade = callback.upgrade || false;
+    var treatAsVector = callback.treatAsVector || false;
 
     // If scale > 1 adjusts source data zoom level inversely.
     // scale 2x => z-1, scale 4x => z-2, scale 8x => z-3, etc.
@@ -159,6 +161,8 @@ Backend.prototype.getTile = function(z, x, y, callback) {
             compression = 'inflate';
         } else if (body && body[0] == 0x1F && body[1] == 0x8B) {
             compression = 'gunzip';
+        } else if (treatAsVector) {
+            compression = true;
         }
 
         if (!body || !body.length) {

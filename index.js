@@ -18,6 +18,7 @@ var profiler = require('./tile-profiler');
 var Backend = require('./backend');
 var AWS = require('aws-sdk');
 var s3urls = require('s3urls');
+var uptile = require('tilelive-promise');
 
 // Register fonts for xray styles.
 mapnik.register_fonts(path.resolve(__dirname, 'fonts'));
@@ -54,7 +55,7 @@ function Vector(uri, callback) {
     this._format = uri.format || undefined;
     this._renderer = uri.renderer || undefined;
     this._source = uri.source || undefined;
-    this._backend = uri.backend || undefined;
+    this._backend = uri.backend ? uptile( uri.backend ) : undefined;
     this._base = path.resolve(uri.base || __dirname);
 
     if (callback) this.once('open', callback);
@@ -405,7 +406,7 @@ function tm2z(uri, callback) {
     if (typeof uri === 'string') {
         uri = url.parse(uri, true);
         uri.pathname = qs.unescape(uri.pathname);
-    }    
+    }
 
     var maxsize = {
         file: uri.filesize || 750 * 1024,
