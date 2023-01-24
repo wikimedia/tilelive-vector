@@ -18,7 +18,7 @@ var profiler = require('./tile-profiler');
 var Backend = require('./backend');
 var AWS = require('aws-sdk');
 var s3urls = require('s3urls');
-var uptile = require('tilelive-promise');
+var uptile = require('@wikimedia/tilelive-promise');
 
 // Register fonts for xray styles.
 mapnik.register_fonts(path.resolve(__dirname, 'fonts'));

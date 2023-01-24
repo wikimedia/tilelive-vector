@@ -3,7 +3,7 @@ var crypto = require('crypto');
 var mapnik = require('mapnik');
 var util = require('util');
 var sm = new (require('@mapbox/sphericalmercator'))();
-var uptile = require('tilelive-promise');
+var uptile = require('@wikimedia/tilelive-promise');
 
 module.exports = Backend;
 
