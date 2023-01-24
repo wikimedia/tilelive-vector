@@ -16,6 +16,7 @@
     "@mapbox/sphericalmercator": "^1.2.0",
     "@mapbox/tilelive": "^6.1.1",
     "@mapbox/tiletype": "0.3.x",
+    "@wikimedia/tilelive-promise": "^2.1.0",
     "aws-sdk": "^2.1299.0",
     "mapnik": "4.2.1",
     "numeral": "~1.5.3",
@@ -23,7 +24,6 @@
     "s3urls": "^1.3.0",
     "spherical": "~0.1.0",
     "tar": "~2.2.1",
-    "tilelive-promise": "^2.0.0",
     "underscore": "^1.13.6"
   },
   "devDependencies": {
