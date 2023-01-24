@@ -12,6 +12,7 @@
       "type": "BSD"
     }
   ],
+  "files": [ "index.js", "backend.js", "tile-profiler.js", "fonts/" ,"templates/" ],
   "dependencies": {
     "@mapbox/sphericalmercator": "^1.2.0",
     "@mapbox/tilelive": "^6.1.1",
